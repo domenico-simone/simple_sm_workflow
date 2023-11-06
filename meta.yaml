@@ -1,0 +1,22 @@
+{% set version = "0.0.1" %}
+{% set pyproject = load_file_data('pyproject.toml') %}
+{% set poetry = pyproject.get('tool', {}).get('poetry') %}
+
+package:
+  name: sm_wf
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/domenico-simone/simple_sm_workflow.git
+
+build:
+  entry_points:
+    - wf1 = src.main:run_snakemake_workflow
+
+requirements:
+  build:
+    - git
+  host:
+    - python
+  run:
+    - {{ poetry.get('dependencies') }}
