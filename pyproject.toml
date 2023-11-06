@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "test-cli-dk"
+version = "0.2.1"
+description = ""
+authors = ["domenico-simone <dome.simone@gmail.com>"]
+readme = "README.md"
+packages = [{include = "test_cli"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+snakemake = "^7.23"
+
+[[tool.poetry.source]]
+name = "test-pypi"
+url = "https://test.pypi.org/legacy/"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+hello_dK = "test_cli.tools:hello_world"
+hi_dK = "test_cli.tools:hi_everyone"
+wf1 = "test_cli.main:run_snakemake_workflow"
